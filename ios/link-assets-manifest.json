@@ -1,0 +1,81 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AGaramondPro-Bold.otf",
+      "sha1": "8fbe31a4a3bcabea094858800f94c70df6303eaa"
+    },
+    {
+      "path": "src/assets/fonts/AGaramondPro-BoldItalic.otf",
+      "sha1": "17985555634b9ac5f557c5c7ca8c4894110a0b76"
+    },
+    {
+      "path": "src/assets/fonts/AGaramondPro-Italic.otf",
+      "sha1": "20e900a564ec2ae4528535fd59a28c2a07ec2ae2"
+    },
+    {
+      "path": "src/assets/fonts/AGaramondPro-Regular.otf",
+      "sha1": "211723d7471e07a637d844318f0c9ae61cce236d"
+    },
+    {
+      "path": "src/assets/fonts/AGaramondPro-SemiboldItalic.otf",
+      "sha1": "90540332bb30821928b57f926727e5398dc86f26"
+    },
+    {
+      "path": "src/assets/fonts/Avenir Black Oblique.ttf",
+      "sha1": "9276ea38a736b02ef374f3c71adfacb59950294c"
+    },
+    {
+      "path": "src/assets/fonts/Avenir Book Oblique.ttf",
+      "sha1": "d28790a0db7d82507bcfdea192560a34b924cf60"
+    },
+    {
+      "path": "src/assets/fonts/Avenir Medium.ttf",
+      "sha1": "6add21b119dcbd7ae3e76440885e417d10d2b67d"
+    },
+    {
+      "path": "src/assets/fonts/Avenir-Black.ttf",
+      "sha1": "8785410d05803e43992bc9d0b44cbaabaa72ef9b"
+    },
+    {
+      "path": "src/assets/fonts/Avenir-Medium.ttf",
+      "sha1": "271fcc5b7153bbf7607606a1f76a601ca9acae10"
+    },
+    {
+      "path": "src/assets/fonts/Avenir-Oblique.ttf",
+      "sha1": "1d6e24bdacb160df49f47d91b160ed8f3b64d60f"
+    },
+    {
+      "path": "src/assets/fonts/Avenir-Roman.ttf",
+      "sha1": "758723a68b2480466c95a1e090f5be8eafbd5817"
+    },
+    {
+      "path": "src/assets/fonts/Avenir.ttc",
+      "sha1": "e49ae482c1b9f6843454376e77adf9d3f6f77185"
+    },
+    {
+      "path": "src/assets/fonts/Avenir_85_Heavy.ttf",
+      "sha1": "0b9177b4624184f8e164288d978199e05ee7df8e"
+    },
+    {
+      "path": "src/assets/fonts/Avenir_95_Black.ttf",
+      "sha1": "387ca6017255558a1e04f1f19eebbda5aa56682a"
+    },
+    {
+      "path": "src/assets/fonts/Geomanist-Book.otf",
+      "sha1": "3306394a62b53ba891df31cba89195fbeccf4405"
+    },
+    {
+      "path": "src/assets/fonts/Geomanist-Light.otf",
+      "sha1": "33d32df021a545ea52eec010e604e3aeaf46419b"
+    },
+    {
+      "path": "src/assets/fonts/Monotype  - Helvetica Now Display.otf",
+      "sha1": "72be74408fa4623c980f4e7c30f4e35de09112cf"
+    },
+    {
+      "path": "src/assets/fonts/MyriadPro-Regular.otf",
+      "sha1": "0e18282cd63b45610bf8381ca2895c7fde1477bd"
+    }
+  ]
+}
