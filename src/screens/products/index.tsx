@@ -37,8 +37,6 @@ const Products = (): JSX.Element => {
   const {products, categories, options, filteredProducts, filter} =
     useProductsStore();
   const {addItem, subtractItem, cartItems} = useCartStore();
-  const data = options.length > 0 ? filteredProducts : products;
-
   const headerComponent = () => (
     <View style={styles.headerContainer}>
       <Header
@@ -122,7 +120,7 @@ const Products = (): JSX.Element => {
       contentContainerStyle={styles.content}
       ListHeaderComponent={headerComponent}
       keyExtractor={item => item.id}
-      data={data}
+      data={options.includes('All') || options.includes('')  ? products : filteredProducts}
       renderItem={renderItem}
     />
   );
