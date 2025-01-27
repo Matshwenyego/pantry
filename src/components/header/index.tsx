@@ -10,9 +10,10 @@ interface Props {
   headerLeft?: boolean;
   headerRight?: boolean;
   onBackPress?: () => void;
+  onFilterPress?: () => void;
 }
 
-const Header = ({headerLeft, headerRight, onBackPress}: Props): JSX.Element => {
+const Header = ({headerLeft, headerRight, onBackPress, onFilterPress}: Props): JSX.Element => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onBackPress} style={styles.button}>
@@ -23,7 +24,7 @@ const Header = ({headerLeft, headerRight, onBackPress}: Props): JSX.Element => {
       </TouchableOpacity>
 
       {headerRight && (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={onFilterPress} style={styles.button}>
           <Text style={styles.text}>Filter</Text>
           <View style={[styles.icon, styles.ml]}>
             <FilterIcon />

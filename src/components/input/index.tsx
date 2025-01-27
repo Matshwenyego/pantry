@@ -5,7 +5,7 @@ import {View, Text, TextInput, Animated, TouchableOpacity} from 'react-native';
 import HideIcon from '../../assets/icons/Hide.svg';
 import CloseIcon from '../../assets/icons/Close.svg';
 
-import COLOURS from '../../assets/colors';
+import COLOURS from '../../assets/colours';
 
 import styles from './styles';
 
@@ -51,9 +51,9 @@ const Input = ({
     }
   };
 
-  const onChangeText = (text: string) => {
-    setText(text);
-    if (text) {
+  const onChangeText = (event: string) => {
+    setText(event);
+    if (event) {
       animate(1);
     } else {
       animate(focus ? 1 : 0);
@@ -82,7 +82,7 @@ const Input = ({
         {name}
       </Animated.Text>
       <View style={styles.prefixContainer}>
-        {type === 'numeric' && text && (
+        {type === 'numeric' && (text || focus) && (
           <Text style={styles.prefix}>+ 27 |</Text>
         )}
         <TextInput

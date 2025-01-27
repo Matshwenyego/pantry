@@ -13,11 +13,10 @@ import Button from '../../components/button';
 import styles from './styles';
 
 // clear input
-// disabled button and show as greyed out
 // refactor
 // hide and show password icon
-// validated the password (alphanumeric, special character, length)
 // centralise text font
+// add spinner
 
  const Signup = (): JSX.Element => {
   const navigation = useNavigation();

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import {SvgProps} from 'react-native-svg';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //screens
@@ -17,6 +17,8 @@ import SearchIcon from '../../assets/icons/Search.svg';
 import CartIcon from '../../assets/icons/Cart.svg';
 import AccountIcon from '../../assets/icons/Account.svg';
 
+import useCartStore from '../../store/cart';
+
 const Tab = createBottomTabNavigator();
 
 type IconType = FC<SvgProps>;
@@ -31,6 +33,10 @@ const tabBarIcon = ({Icon, color}: {Icon: IconType; color: string}) => (
 
 const BottomTab = () => {
   const {Navigator, Screen} = Tab;
+  const cartInfo = useCartStore(state => state.cartInfo);
+
+  console.log({count: cartInfo?.count});
+
   return (
     <Navigator
       screenOptions={{
@@ -66,7 +72,9 @@ const BottomTab = () => {
       />
       <Screen
         options={{
-          tabBarStyle: { display: 'none'},
+          tabBarBadgeStyle: {display: cartInfo?.count ? 'flex' : 'none'},
+          tabBarBadge: cartInfo?.count,
+          tabBarStyle: {display: 'none'},
           tabBarShowLabel: false,
           tabBarIcon: ({color}) => tabBarIcon({Icon: CartIcon, color}),
         }}

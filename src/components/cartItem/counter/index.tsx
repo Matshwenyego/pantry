@@ -11,20 +11,22 @@ interface Props {
   onItemAddPress: () => void;
   onItemSubtractPress: () => void;
   count: string;
+  iconStyle?: any;
 }
 
 const Counter = ({
   onItemAddPress,
   onItemSubtractPress,
   count,
+  iconStyle,
 }: Props): JSX.Element => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onItemAddPress} style={styles.button}>
+      <TouchableOpacity onPress={onItemAddPress} style={[styles.button, iconStyle]}>
         <AddIcon />
       </TouchableOpacity>
       <Text style={styles.text}>{count}</Text>
-      <TouchableOpacity onPress={onItemSubtractPress} style={styles.button}>
+      <TouchableOpacity onPress={onItemSubtractPress} style={[styles.button, iconStyle]}>
         <RemoveIcon />
       </TouchableOpacity>
     </View>

@@ -3,18 +3,11 @@ import COLOURS from '../../assets/colours';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLOURS.OLIVE,
-    height: 56,
-    borderRadius: 80,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    color: '#FCF9F5', // move to colours
-    fontFamily: 'Avenir',
-    fontSize: 14,
-    lineHeight: 20,
-  },
+    backgroundColor: COLOURS.BLACK50,
+  }
 });
 
 export default styles;

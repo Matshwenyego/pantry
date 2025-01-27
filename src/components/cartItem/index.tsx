@@ -12,7 +12,7 @@ import styles from './styles';
 
 interface Props {
   description: string;
-  price: string;
+  price: number;
   count: string;
   onItemAddPress: () => void;
   onItemSubtractPress: () => void;

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import COLOURS from '../../assets/colors';
+import COLOURS from '../../assets/colours';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +21,22 @@ const styles = StyleSheet.create({
     fontSize: 40,
     lineHeight: 50,
     fontStyle: 'italic',
+  },
+  p3: {
+    color: '#54634B',
+    fontFamily: 'Avenir',
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '800',
+  },
+  mt40: {
+    marginTop: 40,
+  },
+  mt20: {
+    marginTop: 20,
+  },
+  pb40: {
+    paddingBottom: 40,
   },
 });
 

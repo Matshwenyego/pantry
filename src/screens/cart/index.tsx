@@ -8,38 +8,14 @@ import Banner from '../../components/banner';
 import Button from '../../components/button';
 import CartItem from '../../components/cartItem';
 
-import styles from './styles';
+import useCartStore from '../../store/cart';
 
-const data = [
-  {
-    description: 'WHOLE FREE RANGE CHICKEN',
-    price: '79.99',
-    count: '2',
-  },
-  {
-    description: 'WHOLE FREE RANGE CHICKEN',
-    price: '69.99',
-    count: '1',
-  },
-  {
-    description: 'WHOLE FREE RANGE CHICKEN',
-    price: '49.99',
-    count: '3',
-  },
-  {
-    description: 'WHOLE FREE RANGE CHICKEN',
-    price: '29.99',
-    count: '1',
-  },
-  {
-    description: 'WHOLE FREE RANGE CHICKEN',
-    price: '19.99',
-    count: '7',
-  },
-];
+import styles from './styles';
 
 const Cart = (): JSX.Element => {
   const navigation = useNavigation();
+  const {cartItems, cartInfo, addItem, subtractItem, removeItem} =
+    useCartStore();
 
   const headerComponent = () => (
     <View style={{backgroundColor: '#FFFFFF'}}>
@@ -53,14 +29,14 @@ const Cart = (): JSX.Element => {
   const renderItem = ({item, index}) => (
     <>
       <CartItem
-        description={item.description}
+        description={item.name}
         price={item.price}
         count={item.count}
-        onItemRemovePress={() => {}}
-        onItemAddPress={() => {}}
-        onItemSubtractPress={() => {}}
+        onItemRemovePress={() => removeItem(item)}
+        onItemAddPress={() => addItem(item)}
+        onItemSubtractPress={() => subtractItem(item)}
       />
-      {index !== data.length - 1 && <View style={styles.divider} />}
+      {index !== cartItems.length - 1 && <View style={styles.divider} />}
     </>
   );
 
@@ -69,7 +45,7 @@ const Cart = (): JSX.Element => {
       <FlatList
         style={styles.container}
         contentContainerStyle={{paddingBottom: 40}}
-        data={data}
+        data={cartItems}
         horizontal={false}
         stickyHeaderIndices={[0]}
         ListHeaderComponent={headerComponent}
@@ -77,57 +53,61 @@ const Cart = (): JSX.Element => {
           index.toString() + item.price + item.count + item.description
         }
         renderItem={renderItem}
-        ListFooterComponent={() =>        <View
-          style={{
-            marginTop: 40,
-            borderWidth: 1,
-            height: 40,
-            borderRadius: 80,
-            borderColor: '#54634B',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingHorizontal: 16,
-
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 9,
-            },
-            shadowOpacity: 0.48,
-            shadowRadius: 11.95,
-            
-            elevation: 18,
-          }}>
-          <Text
-            style={{
-              color: '#54634B',
-              fontFamily: 'Avenir',
-              fontSize: 12,
-              lineHeight: 20,
-            }}>
-            Add your promo code
-          </Text>
-          <TouchableOpacity
-            style={{borderLeftWidth: 1, borderColor: '#54634B', width: 80}}>
-            <Text
+        ListFooterComponent={() =>
+          cartItems.length > 0 && (
+            <View
               style={{
-                textAlign: 'right',
-                color: '#54634B66',
-                fontFamily: 'Avenir',
-                fontSize: 12,
-                lineHeight: 20,
-                fontWeight: '800',
+                marginTop: 40,
+                borderWidth: 1,
+                height: 40,
+                borderRadius: 80,
+                borderColor: '#54634B',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingHorizontal: 16,
+
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 9,
+                },
+                shadowOpacity: 0.48,
+                shadowRadius: 11.95,
+
+                elevation: 18,
               }}>
-              Apply
-            </Text>
-          </TouchableOpacity>
-        </View>}
+              <Text
+                style={{
+                  color: '#54634B',
+                  fontFamily: 'Avenir',
+                  fontSize: 12,
+                  lineHeight: 20,
+                }}>
+                Add your promo code
+              </Text>
+              <TouchableOpacity
+                style={{borderLeftWidth: 1, borderColor: '#54634B', width: 80}}>
+                <Text
+                  style={{
+                    textAlign: 'right',
+                    color: '#54634B66',
+                    fontFamily: 'Avenir',
+                    fontSize: 12,
+                    lineHeight: 20,
+                    fontWeight: '800',
+                  }}>
+                  Apply
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )
+        }
       />
-      
+
       <View
         style={{
-          height: '26%',
+          height: 200,
           backgroundColor: '#EBEAE4',
           padding: 16,
           justifyContent: 'space-between',
@@ -154,7 +134,7 @@ const Cart = (): JSX.Element => {
               lineHeight: 20,
               fontWeight: '800',
             }}>
-            R XXX.XX
+            R {cartInfo?.total?.toFixed(2).toString()}
           </Text>
         </View>
 
@@ -180,7 +160,7 @@ const Cart = (): JSX.Element => {
               lineHeight: 20,
               fontWeight: '800',
             }}>
-            R XXX.XX
+            R 30.00
           </Text>
         </View>
         <View style={{borderWidth: 1, borderColor: '#54634B'}} />
@@ -207,7 +187,7 @@ const Cart = (): JSX.Element => {
               lineHeight: 24,
               fontWeight: '700',
             }}>
-            R XXX.XX
+            R {(cartInfo?.total + 30).toFixed(2).toString()}
           </Text>
         </View>
         {/* <Text>Sub total</Text> */}

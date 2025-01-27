@@ -19,7 +19,7 @@ const Button = ({onPress, name, disabled, props}: Props): JSX.Element => {
       activeOpacity={0.9}
       style={[
         styles.container,
-        // move to colours
+        // move to COLOURS
         {backgroundColor: disabled ? '#54634B80' : '#54634B'},
       ]}>
       <Text style={styles.text}>{name}</Text>
