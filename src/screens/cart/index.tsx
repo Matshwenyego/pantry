@@ -86,7 +86,7 @@ const Cart = (): JSX.Element => {
         style={[
           styles.cartTotalsContainer,
           // eslint-disable-next-line react-native/no-inline-styles
-          {height: cartItems?.length > 0 ? 200 : 'auto'},
+          {height: cartItems?.length > 0 ? 220 : 'auto'},
         ]}>
         {cartItems?.length > 0 && (
           <>

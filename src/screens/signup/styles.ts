@@ -4,7 +4,7 @@ import COLOURS from '../../assets/colours';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLOURS.CREAM,
-    padding: 16,
+    paddingHorizontal: 16,
   },
   exploreContainer: {
     alignItems: 'flex-end',
