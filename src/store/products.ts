@@ -1,47 +1,55 @@
-import {create} from 'zustand';
-// import { devtools, persist } from 'zustand/middleware'
-// import type {} from '@redux-devtools/extension' // required for devtools typing
-import {categories, products} from './data/data';
+import { create } from 'zustand';
+import {ImageProps} from 'react-native';
+import { categories, products } from './data/data';
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  image: ImageProps;
+  count: number;
+}
 
 interface ProductsState {
-  products: Array<any>;
-  filteredProducts: Array<any>;
-  categories: Array<any>;
-  options: Array<string>;
+  products: Product[];
+  filteredProducts: Product[];
+  categories: string[];
+  options: string[];
   filter: (category: string) => void;
 }
 
-const useProductsStore = create<ProductsState>(set => ({
+const useProductsStore = create<ProductsState>((set, get) => ({
   products,
   filteredProducts: products,
   categories,
   options: ['All'],
-  filter: category =>
-    set(state => {
+  filter: (category: string) => {
+    const { options, products } = get();
+    if (category === 'All') {
+      set({
+        filteredProducts: products,
+        options: ['All'],
+      });
+      return;
+    }
 
-      if (category === 'All') {
-        return {
-          filteredProducts: products,
-          options: ['All'],
-        }
-      }
+    const isCategorySelected = options.includes(category);
+    const updatedOptions = isCategorySelected
+      ? options.filter((item) => item !== category)
+      : options.includes('All')
+      ? [category]
+      : [...options, category];
 
-      const exists = state.options.includes(category);
-      const options = exists
-        ? state.options.filter(item => item !== category)
-        : state.options.includes('All') ? [category] : [...state.options, category];
+    const filteredProducts = products.filter((product) =>
+      updatedOptions.includes(product.category)
+    );
 
-      return {
-        filteredProducts: state.products.filter(item =>
-          options.includes(item.category),
-        ),
-        options,
-      };
-    }),
-  //   filter: (category) => set(state => ({sorted_products: state.products.filter((item) => item.category === category)})),
-  //   filteredProducts: (category: Array<string>) => set(state => ({products: state.products})),
+    set({
+      filteredProducts,
+      options: updatedOptions.length > 0 ? updatedOptions : ['All'],
+    });
+  },
 }));
-
-// category =>
 
 export default useProductsStore;

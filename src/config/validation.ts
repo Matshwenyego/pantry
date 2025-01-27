@@ -7,8 +7,8 @@ const schema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is Required'),
   number: Yup.string()
     .matches(
-      /^(0)(6|7|8)\d{8}$/,
-      'Enter a valid phone number (e.g., 0821234567)',
+      /^(6|7|8)\d{8}$/,
+      'Enter a valid phone number (e.g., 821234567)',
     )
     .required('Mobile number is required'),
   password: Yup.string()

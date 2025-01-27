@@ -1,12 +1,10 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-
-// navigation
 import RootStack from './src/navigation';
-
-// components
 import Spinner from './src/components/spinner';
+
+import COLOURS from './src/assets/colours';
 
 function App(): React.JSX.Element {
   return (
@@ -17,8 +15,7 @@ function App(): React.JSX.Element {
           <RootStack />
         </View>
       </SafeAreaView>
-      {/* delay then show spinner */}
-      {/* <Spinner /> */}
+      <Spinner />
     </NavigationContainer>
   );
 }
@@ -26,6 +23,7 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLOURS.CREAM,
   },
 });
 

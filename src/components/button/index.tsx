@@ -1,5 +1,6 @@
 import React, {JSX} from 'react';
 import {TouchableOpacity, Text, TouchableOpacityProps} from 'react-native';
+import COLOURS from '../../assets/colours';
 
 import styles from './styles';
 
@@ -19,8 +20,7 @@ const Button = ({onPress, name, disabled, props}: Props): JSX.Element => {
       activeOpacity={0.9}
       style={[
         styles.container,
-        // move to COLOURS
-        {backgroundColor: disabled ? '#54634B80' : '#54634B'},
+        {backgroundColor: disabled ? COLOURS.OLIVE50 : COLOURS.OLIVE},
       ]}>
       <Text style={styles.text}>{name}</Text>
     </TouchableOpacity>

@@ -1,25 +1,35 @@
 import React, {JSX} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
-import schema from '../../config/validation';
 
-// components
 import Header from '../../components/header';
 import Banner from '../../components/banner';
 import Input from '../../components/input';
 import Button from '../../components/button';
 
+import schema from '../../config/validation';
+
+import useAppStore from '../../store/app';
+
 import styles from './styles';
 
-// clear input
-// refactor
-// hide and show password icon
-// centralise text font
-// add spinner
+const Signup = (): JSX.Element => {
+  const navigation = useNavigation<NavigationProp<string>>();
+  const setLoadingState = useAppStore(state => state.setLoadingState);
 
- const Signup = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navToProducts = () => {
+    navigation.navigate('BottomTab');
+  };
+
+  const handleFormSubmit = () => {
+    setLoadingState();
+    setTimeout(() => {
+      setLoadingState();
+      navToProducts();
+    }, 2000);
+  };
+
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
@@ -27,7 +37,7 @@ import styles from './styles';
       style={styles.container}>
       <Header />
       <View style={styles.exploreContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={navToProducts}>
           <Text style={styles.exploreText}>Explore app</Text>
         </TouchableOpacity>
       </View>
@@ -42,9 +52,9 @@ import styles from './styles';
       <Formik
         validationSchema={schema}
         initialValues={{name: '', email: '', number: '', password: ''}}
-        onSubmit={() => navigation.navigate('BottomTab')}>
+        onSubmit={handleFormSubmit}>
         {({handleChange, handleSubmit, values, errors}) => (
-          <View style={{marginTop: 40}}>
+          <View style={styles.mt40}>
             <Input
               name="Full name"
               setText={handleChange('name')}
@@ -74,15 +84,13 @@ import styles from './styles';
               secureTextEntry
               error={errors.password}
             />
-            <View style={{marginTop: 40}} />
-            {console.log({values})}
-            {console.log({error: Object.keys(errors).length > 0})}
+            <View style={styles.mt40} />
             <Button
               disabled={
-                (values.name === '' ||
-                values.email  === '' ||
-                values.number  === '' ||
-                values.password === '') ||
+                values.name === '' ||
+                values.email === '' ||
+                values.number === '' ||
+                values.password === '' ||
                 Object.keys(errors).length > 0
               }
               onPress={handleSubmit}
@@ -92,98 +100,28 @@ import styles from './styles';
         )}
       </Formik>
       <View>
-        <View style={{marginTop: 20}} />
-        <Text
-          style={{
-            color: '#54634B',
-            fontFamily: 'Avenir',
-            fontSize: 14,
-            lineHeight: 20,
-            textAlign: 'center',
-          }}>
-          Have an account?{' '}
-          <Text
-            style={{
-              color: '#54634B',
-              fontFamily: 'Avenir',
-              fontSize: 14,
-              lineHeight: 20,
-              fontWeight: '800',
-            }}>
-            Login
-          </Text>
+        <View style={styles.mt20} />
+        <Text style={styles.account}>
+          Have an account? <Text style={styles.loginText}>Login</Text>
         </Text>
-        <View style={{marginTop: 20}} />
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <View
-            style={{
-              height: 1,
-              borderWidth: 0.8,
-              width: '40%',
-              borderColor: '#54634B',
-            }}
-          />
-          <Text
-            style={{
-              color: '#54634B',
-              fontFamily: 'Avenir',
-              fontSize: 14,
-              lineHeight: 20,
-            }}>
-            or
-          </Text>
-          <View
-            style={{
-              height: 1,
-              borderWidth: 0.8,
-              width: '40%',
-              borderColor: '#54634B',
-            }}
-          />
+        <View style={styles.mt20} />
+        <View style={styles.row}>
+          <View style={styles.divider} />
+          <Text style={styles.account}>or</Text>
+          <View style={styles.divider} />
         </View>
-        <View style={{marginTop: 40}} />
-        <Button onPress={() => {}} name="Explore our app" />
-        <View style={{marginTop: 20}} />
-        <Text
-          style={{
-            color: '#54634B',
-            fontFamily: 'Avenir',
-            fontSize: 12,
-            lineHeight: 16,
-            textAlign: 'center',
-            paddingBottom: 40
-          }}>
+        <View style={styles.mt40} />
+        <Button onPress={navToProducts} name="Explore our app" />
+        <View style={styles.mt20} />
+        <Text style={[styles.termsRegular, styles.pb40]}>
           By sigining up you agree to our,{' '}
-          <Text
-            style={{
-              color: '#54634B',
-              fontFamily: 'Avenir',
-              fontSize: 12,
-              lineHeight: 16,
-              fontWeight: '800',
-            }}>
-            Terms, Data Policy,{' '}
-          </Text>
+          <Text style={styles.termsBold}>Terms, Data Policy, </Text>
           and{'\n'}
-          <Text
-            style={{
-              color: '#54634B',
-              fontFamily: 'Avenir',
-              fontSize: 12,
-              lineHeight: 16,
-              fontWeight: '800',
-            }}>
-            Cookies Policy
-          </Text>
+          <Text style={styles.termsBold}>Cookies Policy</Text>
         </Text>
       </View>
     </ScrollView>
   );
-}
+};
 
 export default Signup;

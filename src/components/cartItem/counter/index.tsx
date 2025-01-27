@@ -10,7 +10,7 @@ import styles from './styles';
 interface Props {
   onItemAddPress: () => void;
   onItemSubtractPress: () => void;
-  count: string;
+  count: number;
   iconStyle?: any;
 }
 
@@ -25,7 +25,7 @@ const Counter = ({
       <TouchableOpacity onPress={onItemAddPress} style={[styles.button, iconStyle]}>
         <AddIcon />
       </TouchableOpacity>
-      <Text style={styles.text}>{count}</Text>
+      <Text style={styles.text}>{count.toString()}</Text>
       <TouchableOpacity onPress={onItemSubtractPress} style={[styles.button, iconStyle]}>
         <RemoveIcon />
       </TouchableOpacity>

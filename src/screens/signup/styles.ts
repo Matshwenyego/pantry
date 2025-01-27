@@ -3,7 +3,7 @@ import COLOURS from '../../assets/colours';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLOURS.WHITE,
+    backgroundColor: COLOURS.CREAM,
     padding: 16,
   },
   exploreContainer: {
@@ -22,12 +22,37 @@ const styles = StyleSheet.create({
     lineHeight: 50,
     fontStyle: 'italic',
   },
-  p3: {
-    color: '#54634B',
+  loginText: {
+    color: COLOURS.OLIVE,
+    fontFamily: 'Avenir',
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '800',
+  },
+  termsRegular: {
+    color: COLOURS.OLIVE,
+    fontFamily: 'Avenir',
+    fontSize: 12,
+    lineHeight: 16,
+    textAlign: 'center',
+  },
+  termsBold: {
+    color: COLOURS.OLIVE,
     fontFamily: 'Avenir',
     fontSize: 12,
     lineHeight: 16,
     fontWeight: '800',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  divider: {
+    height: 1,
+    borderWidth: 0.8,
+    width: '40%',
+    borderColor: COLOURS.OLIVE,
   },
   mt40: {
     marginTop: 40,
@@ -37,6 +62,13 @@ const styles = StyleSheet.create({
   },
   pb40: {
     paddingBottom: 40,
+  },
+  account: {
+    color: COLOURS.OLIVE,
+    fontFamily: 'Avenir',
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: 'center',
   },
 });
 

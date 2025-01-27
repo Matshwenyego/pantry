@@ -5,8 +5,6 @@ import {View, Text, TextInput, Animated, TouchableOpacity} from 'react-native';
 import HideIcon from '../../assets/icons/Hide.svg';
 import CloseIcon from '../../assets/icons/Close.svg';
 
-import COLOURS from '../../assets/colours';
-
 import styles from './styles';
 
 interface Props {
@@ -66,9 +64,6 @@ const Input = ({
         style={[
           styles.name,
           {
-            color: COLOURS.OLIVE,
-            fontFamily: 'Avenir',
-            lineHeight: 20,
             top: animPosition.interpolate({
               inputRange: [0, 1],
               outputRange: [30, 2],

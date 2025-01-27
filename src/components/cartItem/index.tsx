@@ -7,13 +7,11 @@ import Description from './description';
 
 import styles from './styles';
 
-// refactor
-// remove inline functions
-
 interface Props {
   description: string;
   price: number;
-  count: string;
+  count: number;
+  source: any;
   onItemAddPress: () => void;
   onItemSubtractPress: () => void;
   onItemRemovePress: () => void;
@@ -23,21 +21,19 @@ function CartItem({
   description,
   price,
   count,
+  source,
   onItemAddPress,
   onItemSubtractPress,
   onItemRemovePress,
 }: Props): React.JSX.Element {
   return (
     <View style={styles.container}>
-      <View style={{height: 126, flex: 0.4}}>
-        <Image
-          source={require('../../assets/images/Tomahawk.png')}
-          style={{height: 126, width: 133}}
-        />
+      <View style={styles.left}>
+        <Image source={source} style={styles.image} />
       </View>
-      <View style={{flex: 0.6, justifyContent: 'center'}}>
+      <View style={styles.right}>
         <Description description={description} price={price} count={count} />
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View style={styles.container}>
           <SecondaryButton onItemRemovePress={onItemRemovePress} />
           <Counter
             count={count}

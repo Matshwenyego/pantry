@@ -19,6 +19,10 @@ import AccountIcon from '../../assets/icons/Account.svg';
 
 import useCartStore from '../../store/cart';
 
+import COLOURS from '../../assets/colours';
+
+import styles from './styles';
+
 const Tab = createBottomTabNavigator();
 
 type IconType = FC<SvgProps>;
@@ -31,6 +35,8 @@ const tabBarIcon = ({Icon, color}: {Icon: IconType; color: string}) => (
   <TabIcon Icon={Icon} color={color} />
 );
 
+const TabBarBackground = () => <View style={styles.container} />;
+
 const BottomTab = () => {
   const {Navigator, Screen} = Tab;
   const cartInfo = useCartStore(state => state.cartInfo);
@@ -41,10 +47,8 @@ const BottomTab = () => {
     <Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#FFFFFF',
-        tabBarBackground: () => (
-          <View style={{height: 68, backgroundColor: '#54634B'}} />
-        ),
+        tabBarActiveTintColor: COLOURS.CREAM,
+        tabBarBackground: TabBarBackground,
       }}>
       <Screen
         options={{

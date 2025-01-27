@@ -1,10 +1,6 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-// screens
 import Signup from '../screens/signup';
-
-//bottom tab
 import BottomTab from './tab/BottomTab';
 
 const Stack = createNativeStackNavigator();
