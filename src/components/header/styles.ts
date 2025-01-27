@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: COLOURS.CREAM,
+    marginTop: 10,
   },
   mr: {
     marginRight: 5,

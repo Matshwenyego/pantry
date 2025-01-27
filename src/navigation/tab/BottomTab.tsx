@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {View} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {SvgProps} from 'react-native-svg';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -28,20 +28,18 @@ const Tab = createBottomTabNavigator();
 type IconType = FC<SvgProps>;
 
 const TabIcon = ({Icon, color}: {Icon: IconType; color: string}) => (
-  <Icon color={color} />
+  <Icon style={styles.mt} color={color} />
 );
 
 const tabBarIcon = ({Icon, color}: {Icon: IconType; color: string}) => (
   <TabIcon Icon={Icon} color={color} />
 );
 
-const TabBarBackground = () => <View style={styles.container} />;
+const TabBarBackground = () => <SafeAreaView style={styles.container} />;
 
 const BottomTab = () => {
   const {Navigator, Screen} = Tab;
   const cartInfo = useCartStore(state => state.cartInfo);
-
-  console.log({count: cartInfo?.count});
 
   return (
     <Navigator

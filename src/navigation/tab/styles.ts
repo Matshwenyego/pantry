@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
     height: 68,
     backgroundColor: COLOURS.OLIVE,
   },
+  mt: {
+    marginTop: 10,
+  },
 });
 
 export default styles;
