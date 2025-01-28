@@ -87,13 +87,19 @@ const useCartStore = create<CartState>(set => ({
     }),
   removeItem: (product: CartItem) =>
     set(state => {
-      const updatedCartItems = state.cartItems.filter(
-        item => item.id !== product.id,
+      let newCartItems = state.cartItems;
+
+      const existingItemIndex = newCartItems.findIndex(
+        item => item.id === product.id,
       );
 
+      if (existingItemIndex !== -1) {
+        newCartItems.splice(existingItemIndex, 1);
+      }
+
       return {
-        cartItems: updatedCartItems,
-        cartInfo: calculateCartInfo(updatedCartItems),
+        cartItems: newCartItems,
+        cartInfo: calculateCartInfo(newCartItems),
       };
     }),
 }));
