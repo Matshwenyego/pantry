@@ -39,7 +39,6 @@ const useCartStore = create<CartState>(set => ({
     total: 0,
     count: 0,
   },
-
   addItem: (product: CartItem) =>
     set(state => {
       const existingItemIndex = state.cartItems.findIndex(
@@ -62,7 +61,6 @@ const useCartStore = create<CartState>(set => ({
         cartInfo: calculateCartInfo(updatedCartItems),
       };
     }),
-
   subtractItem: (product: CartItem) =>
     set(state => {
       const existingItemIndex = state.cartItems.findIndex(
@@ -87,7 +85,6 @@ const useCartStore = create<CartState>(set => ({
         cartInfo: calculateCartInfo(updatedCartItems),
       };
     }),
-
   removeItem: (product: CartItem) =>
     set(state => {
       const updatedCartItems = state.cartItems.filter(

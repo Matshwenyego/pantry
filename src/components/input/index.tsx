@@ -90,6 +90,7 @@ const Input = ({
           secureTextEntry={showPassword}
         />
         <Animated.View
+          // eslint-disable-next-line react-native/no-inline-styles
           style={[styles.rightComponent, {opacity: text ? animPosition : 0}]}>
           <TouchableOpacity
             onPress={() => {

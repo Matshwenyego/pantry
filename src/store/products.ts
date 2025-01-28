@@ -1,6 +1,6 @@
-import { create } from 'zustand';
+import {create} from 'zustand';
 import {ImageProps} from 'react-native';
-import { categories, products } from './data/data';
+import {categories, products} from './data/data';
 
 interface Product {
   id: string;
@@ -19,37 +19,35 @@ interface ProductsState {
   filter: (category: string) => void;
 }
 
-const useProductsStore = create<ProductsState>((set, get) => ({
+const useProductsStore = create<ProductsState>(set => ({
   products,
   filteredProducts: products,
   categories,
   options: ['All'],
-  filter: (category: string) => {
-    const { options, products } = get();
+  filter: (category: string) => set(state => {
     if (category === 'All') {
-      set({
-        filteredProducts: products,
+      return {
+        filteredProducts: state.products,
         options: ['All'],
-      });
-      return;
+      };
     }
 
-    const isCategorySelected = options.includes(category);
+    const isCategorySelected = state.options.includes(category);
     const updatedOptions = isCategorySelected
-      ? options.filter((item) => item !== category)
-      : options.includes('All')
+      ? state.options.filter(item => item !== category)
+      : state.options.includes('All')
       ? [category]
-      : [...options, category];
+      : [...state.options, category];
 
-    const filteredProducts = products.filter((product) =>
-      updatedOptions.includes(product.category)
+    const filteredProducts = products.filter(product =>
+      updatedOptions.includes(product.category),
     );
 
-    set({
+    return {
       filteredProducts,
       options: updatedOptions.length > 0 ? updatedOptions : ['All'],
-    });
-  },
+    };
+  }),
 }));
 
 export default useProductsStore;
