@@ -1,4 +1,4 @@
-import React, {JSX} from 'react';
+import React, {JSX, useCallback} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
@@ -18,17 +18,17 @@ const Signup = (): JSX.Element => {
   const navigation = useNavigation<NavigationProp<string>>();
   const setLoadingState = useAppStore(state => state.setLoadingState);
 
-  const navToProducts = () => {
+  const navToProducts = useCallback(() => {
     navigation.navigate('BottomTab');
-  };
+  },[navigation]);
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = useCallback(() => {
     setLoadingState();
     setTimeout(() => {
       setLoadingState();
       navToProducts();
     }, 2000);
-  };
+  },[navToProducts, setLoadingState]);
 
   return (
     <ScrollView
