@@ -1,3 +1,16 @@
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-01-28 at 00 54 13](https://github.com/user-attachments/assets/4f031b12-1550-43a7-8d99-68b273d92d6f)
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-01-28 at 00 54 38](https://github.com/user-attachments/assets/80f4e4c2-e043-47fd-a3a7-e9adfe027a0e)
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-01-28 at 00 54 42](https://github.com/user-attachments/assets/83875ecb-c167-431a-9a91-5d551c02e29f)
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-01-28 at 00 54 46](https://github.com/user-attachments/assets/ab2c5f17-64dd-4f1a-a99b-dc07b58b4f4d)
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-01-28 at 00 55 07](https://github.com/user-attachments/assets/8464cf1c-4094-4cd1-ac9e-8137da2e4759)
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-01-28 at 00 55 27](https://github.com/user-attachments/assets/6279868a-b55f-4cb0-9d84-0a08b4b79e77)
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
